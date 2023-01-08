@@ -19,7 +19,7 @@ const ContactsMain = ({contactList}) => {
       <div>
         {contactList.map(contact => (
           <div key={contact._id}>
-            <div className="contactItem" nClick={handleClick}>
+            <div className="contactItem" onClick={handleClick}>
               <div className="contactIcon"></div>
               <div className="contactName">
                 {contact.firstName} {contact.lastName}
