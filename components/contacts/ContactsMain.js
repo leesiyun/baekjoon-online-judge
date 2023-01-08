@@ -2,19 +2,32 @@ import styled from 'styled-components'
 import router from 'next/router'
 
 const ContactsMain = ({contactList}) => {
-  const HandleClick = () => router.push('/contacts/detail')
+  const handleClick = () => router.push('/contacts/detail')
+  const handleDelete = async contactId => {
+    const response = await fetch('/api/contacts', {
+      method: 'DELETE',
+      body: contactId,
+    })
+    const data = await response.json()
+    console.log(data)
+    router.replace(router.asPath)
+  }
+
   return (
     <ContactsMainStyle>
       <div className="contactsCount">CONTACTS (2)</div>
       <div>
         {contactList.map(contact => (
-          <div className="contactItem" key={contact._id} onClick={HandleClick}>
-            <div className="contactIcon"></div>
-            <div className="contactName">
-              {contact.firstName} {contact.lastName}
+          <div key={contact._id}>
+            <div className="contactItem" nClick={handleClick}>
+              <div className="contactIcon"></div>
+              <div className="contactName">
+                {contact.firstName} {contact.lastName}
+              </div>
+              <div>{contact.email}</div>
+              <div>{contact.phoneNumber}</div>
             </div>
-            <div>{contact.email}</div>
-            <div>{contact.phoneNumber}</div>
+            <button onClick={() => handleDelete(contact._id)}>delete</button>
           </div>
         ))}
       </div>

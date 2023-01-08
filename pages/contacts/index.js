@@ -7,6 +7,7 @@ import {useState, useEffect} from 'react'
 const Contacts = ({contacts}) => {
   const [contactList, setContactList] = useState([])
   useEffect(() => setContactList(contacts), [contacts])
+
   return (
     <ContactsStyle>
       <ContactsHeader />
@@ -22,7 +23,7 @@ const ContactsStyle = styled.div`
   font-size: 15px;
 `
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const contacts = await client.fetch('*[_type == "contact"]')
   return {
     props: {
