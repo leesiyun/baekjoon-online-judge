@@ -3,6 +3,7 @@ import ContactsHeader from '../../components/contacts/ContactsHeader'
 import ContactsMain from '../../components/contacts/ContactsMain'
 import client from '../../lib/sanity/client'
 import {useState, useEffect} from 'react'
+import ContactCreateButton from '../../components/contacts/ContactCreateButton'
 
 const Contacts = ({contacts}) => {
   const [contactList, setContactList] = useState([])
@@ -12,6 +13,7 @@ const Contacts = ({contacts}) => {
     <ContactsStyle>
       <ContactsHeader />
       <ContactsMain contactList={contactList} />
+      <ContactCreateButton />
     </ContactsStyle>
   )
 }
