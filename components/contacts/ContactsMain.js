@@ -12,7 +12,6 @@ const ContactsMain = ({contactList}) => {
     console.log(data)
     router.replace(router.asPath)
   }
-
   return (
     <ContactsMainStyle>
       <div className="contactsCount">CONTACTS (2)</div>

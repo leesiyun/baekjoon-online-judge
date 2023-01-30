@@ -8,6 +8,7 @@ export default async function handler(req, res) {
         await client
           .create({
             _type: 'contact',
+            profileImage: newContact.profileImage,
             firstName: newContact.firstName,
             lastName: newContact.lastName,
             phoneNumber: newContact.phoneNumber,
