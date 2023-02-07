@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 import router from 'next/router'
+import Link from 'next/link'
 
 const ContactsMain = ({contactList}) => {
-  const handleClick = () => router.push('/contacts/detail')
   const handleDelete = async contactId => {
     const response = await fetch('/api/contacts', {
       method: 'DELETE',
@@ -18,14 +18,17 @@ const ContactsMain = ({contactList}) => {
       <div>
         {contactList.map(contact => (
           <div key={contact._id}>
-            <div className="contactItem" onClick={handleClick}>
+            <Link
+              href={`/contacts/person/${contact._id}`}
+              className="contactItem"
+            >
               <div className="contactIcon"></div>
               <div className="contactName">
                 {contact.firstName} {contact.lastName}
               </div>
               <div>{contact.email}</div>
               <div>{contact.phoneNumber}</div>
-            </div>
+            </Link>
             <button onClick={() => handleDelete(contact._id)}>delete</button>
           </div>
         ))}

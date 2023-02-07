@@ -1,17 +1,33 @@
 import styled from 'styled-components'
 import router from 'next/router'
 import {BiArrowBack} from 'react-icons/bi'
+import Image from 'next/image'
+import {urlFor} from '../../lib/sanity/client'
 
-const ContactsDetail = () => {
+const ContactsDetail = ({contact}) => {
   const HandleClick = () => router.back()
   return (
     <ContactsDetailStyle>
-      <div className="detail_header">
+      <div className="detail-header">
         <div className="backspace" onClick={HandleClick}>
           <BiArrowBack />
         </div>
-        <div className="contactIcon"></div>
-        <div className="contactName">kim lisa</div>
+        <Image
+          src={urlFor(contact.profileImage).url()}
+          width={170}
+          height={170}
+          alt="profile image"
+        />
+        <div className="contact-profile"></div>
+        <div className="contact-name">
+          {contact.firstName + ' ' + contact.lastName}
+        </div>
+      </div>
+      <div className="contact-detail">
+        <div>{contact.phoneNumber}</div>
+        <div>{contact.email}</div>
+        <div>{contact.birthday}</div>
+        <div>{contact.memo}</div>
       </div>
     </ContactsDetailStyle>
   )
@@ -20,7 +36,7 @@ const ContactsDetail = () => {
 export default ContactsDetail
 
 const ContactsDetailStyle = styled.div`
-  .detail_header {
+  .detail-header {
   }
 
   .backspace {
@@ -30,14 +46,11 @@ const ContactsDetailStyle = styled.div`
     top: 5px;
   }
 
-  .contactIcon {
-    width: 170px;
-    height: 170px;
-    background-color: red;
+  .contact-profile {
     border-radius: 50%;
     margin: 35px 0px 0px 50px;
   }
 
-  .contactName {
+  .contact-name {
   }
 `
