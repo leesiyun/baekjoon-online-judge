@@ -6,7 +6,6 @@ import {useState, useEffect} from 'react'
 import ContactCreateButton from '../../components/contacts/ContactCreateButton'
 
 const Contacts = ({contacts}) => {
-  console.log(contacts)
   const [contactList, setContactList] = useState([])
   useEffect(() => setContactList(contacts), [contacts])
 

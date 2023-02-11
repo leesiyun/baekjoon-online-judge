@@ -1,6 +1,6 @@
 import router from 'next/router'
 import styled from 'styled-components'
-import client from '../../lib/sanity/client'
+import {client} from '@/lib/sanity/client'
 import {useState} from 'react'
 
 const ContactCreate = () => {

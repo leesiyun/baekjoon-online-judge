@@ -2,14 +2,15 @@ import styled from 'styled-components'
 import router from 'next/router'
 import {BiArrowBack} from 'react-icons/bi'
 import Image from 'next/image'
-import {urlFor} from '../../lib/sanity/client'
+import {urlFor} from '@/lib/sanity/client'
 
 const ContactsDetail = ({contact}) => {
-  const HandleClick = () => router.back()
+  const handleBackspaceIconClick = () => router.back()
+  const handleEditButtonClick = () => router.push(`${contact._id}/edit`)
   return (
     <ContactsDetailStyle>
       <div className="detail-header">
-        <div className="backspace" onClick={HandleClick}>
+        <div className="backspace" onClick={handleBackspaceIconClick}>
           <BiArrowBack />
         </div>
         <Image
@@ -17,11 +18,12 @@ const ContactsDetail = ({contact}) => {
           width={170}
           height={170}
           alt="profile image"
+          className="contact-profile"
         />
-        <div className="contact-profile"></div>
         <div className="contact-name">
           {contact.firstName + ' ' + contact.lastName}
         </div>
+        <button onClick={handleEditButtonClick}>Edit</button>
       </div>
       <div className="contact-detail">
         <div>{contact.phoneNumber}</div>
