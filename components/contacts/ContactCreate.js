@@ -2,6 +2,7 @@ import router from 'next/router'
 import styled from 'styled-components'
 import {client} from '@/lib/sanity/client'
 import {useState} from 'react'
+import {contactInputData} from '@/lib/contacts/contactInputData'
 
 const ContactCreate = () => {
   const [imagesAssets, setImagesAssets] = useState(null)
@@ -60,24 +61,15 @@ const ContactCreate = () => {
         <label htmlFor="profile">
           <input type="file" name="profileImage" onChange={uploadImage} />
         </label>
-        <label htmlFor="firstName">
-          <input type="text" name="firstName" placeholder="First name" />
-        </label>
-        <label htmlFor="lastName">
-          <input type="text" name="lastName" placeholder="Last name" />
-        </label>
-        <label htmlFor="phoneNumber">
-          <input type="text" name="phoneNumber" placeholder="Phone Number" />
-        </label>
-        <label htmlFor="email">
-          <input type="text" name="email" placeholder="Email " />
-        </label>
-        <label htmlFor="birthday">
-          <input type="text" name="birthday" placeholder="Birthday" />
-        </label>
-        <label htmlFor="memo">
-          <input type="text" name="memo" placeholder="Memo" />
-        </label>
+        {contactInputData.map((input, index) => (
+          <label htmlFor={input.name} key={index}>
+            <input
+              type="text"
+              name={input.name}
+              placeholder={input.placeholder}
+            />
+          </label>
+        ))}
         <button type="submit">Save</button>
       </form>
     </ContactCreateStyle>

@@ -1,9 +1,11 @@
 import router from 'next/router'
+import {BiArrowBack} from 'react-icons/bi'
 import styled from 'styled-components'
 import {client} from '@/lib/sanity/client'
 import Image from 'next/image'
 import {urlFor} from '@/lib/sanity/client'
 import {useState} from 'react'
+import {contactInputData} from '@/lib/contacts/contactInputData'
 
 const ContactCreate = ({contact}) => {
   const [contactData, setContactData] = useState({
@@ -15,6 +17,7 @@ const ContactCreate = ({contact}) => {
     email: contact.email,
     memo: contact.memo,
   })
+  const handleBackspaceIconClick = () => router.back()
 
   const uploadImage = event => {
     const selectedImage = event.target.files[0]
@@ -82,41 +85,11 @@ const ContactCreate = ({contact}) => {
       })
   }
 
-  const inputData = [
-    {
-      name: 'firstName',
-      placeholder: 'First name',
-      value: contactData.firstName,
-    },
-    {
-      name: 'lastName',
-      placeholder: 'Last name',
-      value: contactData.lastName,
-    },
-    {
-      name: 'phoneNumber',
-      placeholder: 'Phone Number',
-      value: contactData.phoneNumber,
-    },
-    {
-      name: 'email',
-      placeholder: 'Email',
-      value: contactData.email,
-    },
-    {
-      name: 'birthday',
-      placeholder: 'Birthday',
-      value: contactData.birthday,
-    },
-    {
-      name: 'memo',
-      placeholder: 'Memo',
-      value: contactData.memo,
-    },
-  ]
-
   return (
     <ContactCreateStyle>
+      <div className="backspace" onClick={handleBackspaceIconClick}>
+        <BiArrowBack />
+      </div>
       <form onSubmit={handleSubmit}>
         <label htmlFor="profile">
           <Image
@@ -134,13 +107,13 @@ const ContactCreate = ({contact}) => {
           style={{display: 'none'}}
           onChange={uploadImage}
         />
-        {inputData.map((input, index) => (
+        {contactInputData.map((input, index) => (
           <label htmlFor={input.name} key={index}>
             <input
               type="text"
               name={input.name}
               placeholder={input.placeholder}
-              value={input.value}
+              value={contactData[input.name]}
               onChange={handleChange}
             />
           </label>
@@ -154,6 +127,13 @@ const ContactCreate = ({contact}) => {
 export default ContactCreate
 
 const ContactCreateStyle = styled.div`
+  .backspace {
+    margin: 25px 0 0 10px;
+    font-size: 20px;
+    position: absolute;
+    top: 5px;
+  }
+
   .contact-profile {
     border-radius: 50%;
     margin: 35px 0px 0px 50px;
