@@ -18,9 +18,13 @@ const ContactCreateButton = () => {
 export default ContactCreateButton
 
 const ButtonAnimation = keyframes`
-  0%  {width: 100px;  }
-
+  0%  {width: 90px; }
   100% { width: 180px; }
+`
+
+const TextAnimation = keyframes`
+  0%  {opacity: 0 }
+  100% { opacity: 1 }
 `
 
 const ContactCreateButtonStyle = styled.div`
@@ -37,11 +41,13 @@ const ContactCreateButtonStyle = styled.div`
     position: relative;
     top: -15px;
     padding: 1px 0 0 2px;
-    right: 40px;
+    right: 60px;
     box-shadow: 0px 4px 16px 0px #000a3c1a;
     .button-icon {
       font-size: 33px;
-      position: relative;
+      position: absolute;
+      bottom: 13px;
+      right: 14px;
     }
     .button-text {
       display: none;
@@ -53,14 +59,11 @@ const ContactCreateButtonStyle = styled.div`
       border-radius: 30px;
       display: flex;
       align-items: center;
-      .button-icon {
-        position: relative;
-        right: 20px;
-      }
       .button-text {
+        animation: ${TextAnimation} 0.2s;
+        position: absolute;
+        right: 28px;
         display: flex;
-        position: relative;
-        right: 5px;
       }
     }
   }

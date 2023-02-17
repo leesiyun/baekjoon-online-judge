@@ -2,7 +2,7 @@ import router from 'next/router'
 import styled from 'styled-components'
 import {client} from '@/lib/sanity/client'
 import {useState} from 'react'
-import {contactInputData} from '@/lib/contacts/contactInputData'
+import {contactInputData} from '@/lib/contacts/contactData'
 
 const ContactCreate = () => {
   const [imagesAssets, setImagesAssets] = useState(null)

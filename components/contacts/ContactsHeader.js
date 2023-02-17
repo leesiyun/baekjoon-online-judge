@@ -12,8 +12,8 @@ export default ContactsHeader
 
 const ContactsHeaderStyle = styled.div`
   display: flex;
-  width: 97%;
-  padding: 25px 0px 20px 30px;
+  width: 100%;
+  padding: 25px 20px 20px 30px;
   border-bottom: 1px solid #dddddd;
   font-weight: 600;
   div {

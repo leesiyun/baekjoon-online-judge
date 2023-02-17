@@ -53,18 +53,19 @@ export default ContactsMain
 
 const ContactsMainStyle = styled.div`
   padding: 20px 0;
+  height: 98%;
 
   .contacts-count {
     font-size: 13px;
     margin-bottom: 20px;
-    padding: 12px 2%;
+    padding: 12px 60px;
   }
   .contact-item-container {
     display: flex;
     cursor: pointer;
     justify-content: space-between;
     width: 100%;
-    padding: 12px 2%;
+    padding: 12px 60px;
     align-items: center;
     button {
       cursor: pointer;
@@ -72,7 +73,7 @@ const ContactsMainStyle = styled.div`
       background-color: inherit;
       font-size: 18px;
       color: #a5a8a9;
-      margin-right: 20px;
+      margin-right: 10px;
       visibility: hidden;
     }
     &:hover {
