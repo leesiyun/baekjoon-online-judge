@@ -122,10 +122,12 @@ const ContactCreate = ({contact}) => {
           {contactInputData.map((input, index) => (
             <label htmlFor={input.name} key={index}>
               <div className="contact-detail">
-                <FontAwesomeIcon
-                  icon={input?.icon}
-                  className="contact-detail-icon"
-                />
+                {input.icon && (
+                  <FontAwesomeIcon
+                    icon={input.icon}
+                    className="contact-detail-icon"
+                  />
+                )}
                 <input
                   type="text"
                   name={input.name}
@@ -173,6 +175,8 @@ const ContactCreateStyle = styled.div`
 
   .contact-profile {
     border-radius: 50%;
+    width: 170px;
+    height: 170px;
     margin: 35px 0px 0px 50px;
     background-color: #2c2c2c;
     box-shadow: 0px 4px 16px 0px #000a3c1a;
